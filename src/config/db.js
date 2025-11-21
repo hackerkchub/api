@@ -1,11 +1,12 @@
 const mysql = require('mysql2');
 
 const db = mysql.createConnection({
-  host: 'sql12.freesqldatabase.com',
-  user: 'sql12808823',
-  password: 'SMdF621ejf',
-  database: 'sql12808823',
+  host: 'ftp.softmaxs.com',
+  user: 'softmaxs_himanshu',
+  password: 'Kapil@001',
+  database: 'softmaxs_himanshu'
 });
+
 
 db.connect((err) => {
   if (err) console.log('❌ DB Connection failed:', err);

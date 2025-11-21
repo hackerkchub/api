@@ -1,15 +1,25 @@
-// src/server.js
+// server.js
+const app = require('./app');
+const http = require('http');
+const socketIo = require('socket.io');
+const chatHandler = require('./chat'); // ✅ Chat logic file import
 
-const path = require("path");
 
-// Database connect
-require("./config/db");
+const PORT = process.env.PORT || 3000;
 
-const app = require("./app");
+// ✅ Create HTTP server from express app
+const server = http.createServer(app);
 
-// Hosting safe PORT (fixed)
-const PORT = 5000;
+// ✅ Initialize Socket.io
+const io = socketIo(server, {
+  cors: { origin: '*' }
+});
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+// ✅ Pass io to chat handler (so chat.js can use it)
+chatHandler(io);
+
+
+// ✅ Start the server
+server.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
