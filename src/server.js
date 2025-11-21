@@ -1,9 +1,15 @@
 // src/server.js
-const app = require("./app");
-require("./config/db");  // DB connect here
 
-const PORT = process.env.PORT || 5000;
+const path = require("path");
+
+// Database connect
+require("./config/db");
+
+const app = require("./app");
+
+// Hosting safe PORT (fixed)
+const PORT = 5000;
 
 app.listen(PORT, () => {
-  console.log(`✅Server started on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });

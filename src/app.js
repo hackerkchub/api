@@ -1,25 +1,27 @@
 // src/app.js
+
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
-
+// Only Category Route
 const categoryRoutes = require("./routes/categoryRoutes");
 
 const app = express();
 
 // Middlewares
 app.use(cors());
-app.use(express.json()); 
+app.use(express.json());
 
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+// Static folder for uploads (Hosting compatible)
+app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 
-// API Routes
+// Category API
 app.use("/api/categories", categoryRoutes);
 
-// Home Route
+// Default Route
 app.get("/", (req, res) => {
-  res.json({ message: "API is running..." });
+  res.json({ message: "API is running on hosting server" });
 });
 
 module.exports = app;
