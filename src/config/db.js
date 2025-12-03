@@ -1,10 +1,10 @@
 const mysql = require('mysql2');
 
 const db = mysql.createConnection({
-  host: 'ftp.softmaxs.com',
-  user: 'softmaxs_himanshu',
-  password: 'Kapil@001',
-  database: 'softmaxs_himanshu'
+   host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'db_name'
 });
 
 
